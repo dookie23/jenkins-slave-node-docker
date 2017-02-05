@@ -5,6 +5,8 @@ USER root
 
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.9.5
+ENV DOCKER_VERSION 1.9.1
+ENV COMPOSE_VERSION 1.5.2
 
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys 9554F04D7259F04124DE6B476D5A82AC7E37093B \
   && gpg --keyserver pool.sks-keyservers.net --recv-keys 94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
@@ -23,13 +25,7 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys 9554F04D7259F04124DE6B47
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
   && npm install -g yarn
 
-
-ENV DOCKER_VERSION 1.9.1
-ENV COMPOSE_VERSION 1.5.2
-
-USER root
-
-RUN apt-get update && apt-get install -y git && apt-get clean
+RUN apt-get update && apt-get install -y git jq && apt-get clean
 
 # Install Docker binary
 RUN wget -nv https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION -O /usr/bin/docker && \
