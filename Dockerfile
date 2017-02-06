@@ -38,4 +38,5 @@ RUN wget -nv https://github.com/docker/compose/releases/download/$COMPOSE_VERSIO
 
 ADD wait-for-it /usr/local/bin
 
+#Test
 USER root
