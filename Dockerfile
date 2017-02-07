@@ -35,6 +35,8 @@ RUN wget -nv https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION -
 RUN wget -nv https://github.com/docker/compose/releases/download/$COMPOSE_VERSION/docker-compose-Linux-x86_64 \
   -O /usr/bin/docker-compose && chmod +x /usr/bin/docker-compose
 
+# add jenkins user to docker group to be able to run docker daemon
+usermod -a -G docker jenkins
 
 ADD wait-for-it /usr/local/bin
 
