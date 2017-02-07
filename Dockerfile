@@ -31,12 +31,8 @@ RUN apt-get update && apt-get install -y git jq && apt-get clean
 RUN wget -nv https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION -O /usr/bin/docker && \
   chmod +x /usr/bin/docker
 
-# Install Docker Compose binary
-RUN wget -nv https://github.com/docker/compose/releases/download/$COMPOSE_VERSION/docker-compose-Linux-x86_64 \
-  -O /usr/bin/docker-compose && chmod +x /usr/bin/docker-compose
-
-# add jenkins user to docker group to be able to run docker daemon
-usermod -a -G docker jenkins
+# TODO: illuque's IP, delete when another docker daemon running
+ENV DOCKER_HOST 'tcp://10.5.0.134:2375'
 
 ADD wait-for-it /usr/local/bin
 
