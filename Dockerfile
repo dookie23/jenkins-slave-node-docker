@@ -31,9 +31,6 @@ RUN apt-get update && apt-get install -y git jq && apt-get clean
 RUN wget -nv https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION -O /usr/bin/docker && \
   chmod +x /usr/bin/docker
 
-# TODO: illuque's IP, delete when another docker daemon running
-ENV DOCKER_HOST 'tcp://127.0.0.1:2375'
-
 ADD wait-for-it /usr/local/bin
 
 USER jenkins
