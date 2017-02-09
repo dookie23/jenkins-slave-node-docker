@@ -27,7 +27,7 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys 9554F04D7259F04124DE6B47
 RUN apt-get update && apt-get install -y git jq && apt-get clean
 
 # Install Docker binary
-RUN wget -nv https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION -O /usr/bin/docker && \
+RUN wget -nv https://get.docker.com/builds/Linux/x86_64/docker-1.13.1.tgz && tar --strip-components=1 -xvzf docker-1.13.1.tgz -C /usr/bin/docker && \
   chmod +x /usr/bin/docker
 
 ADD wait-for-it /usr/local/bin
