@@ -4,8 +4,9 @@ MAINTAINER Linki <vilasmaciel@gmail.com>
 USER root
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 6.9.5
 ENV DOCKER_VERSION 1.12.6
+ENV NODE_VERSION 7.10.0
+ENV COMPOSE_VERSION 1.12.0
 
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys 9554F04D7259F04124DE6B476D5A82AC7E37093B \
   && gpg --keyserver pool.sks-keyservers.net --recv-keys 94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
