@@ -1,2 +1,3 @@
-# jenkins-slave-node-docker
-Docker image with node and docker for compile and build docker images with node appliations
+# Jenkins Slave with NodeJS and Docker
+
+Docker image to use as a Jenkins Slave with NodeJS and Docker.
