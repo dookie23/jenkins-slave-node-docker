@@ -56,7 +56,7 @@ RUN set -ex \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
 
-RUN apt-get update && apt-get install -y git jq rsync g++ build-essential && apt-get clean
+RUN apt-get update && apt-get install -y git jq rsync g++ build-essential software-properties-common apt-transport-https && apt-get clean
 
 # Install Docker binary
 RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz && tar --strip-components=1 -xvzf docker-${DOCKER_VERSION}.tgz -C /usr/bin
