@@ -67,4 +67,4 @@ RUN dpkg --add-architecture i386 && apt-get update \
 
 ADD wait-for-it /usr/local/bin
 
-USER debian
+USER jenkins
