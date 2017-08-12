@@ -25,14 +25,13 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys 9554F04D7259F04124DE6B47
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
   && npm install -g yarn
 
-RUN apt-get update && apt-get install -y git jq rsync g++ build-essential software-properties-common apt-transport-https && apt-get clean
+RUN apt-get update && apt-get install -y git jq rsync g++ build-essential && apt-get clean
 
 # Install Docker binary
 RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz && tar --strip-components=1 -xvzf docker-${DOCKER_VERSION}.tgz -C /usr/bin
 
-# Install WineHQ
-RUN dpkg --add-architecture i386 && apt-get update \
-  && apt-get install -y wine-bin && apt-get clean
+# Install wine-bin
+RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y wine-bin && apt-get clean
 
 ADD wait-for-it /usr/local/bin
 
