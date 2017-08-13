@@ -30,8 +30,12 @@ RUN apt-get update && apt-get install -y git jq rsync g++ build-essential && apt
 # Install Docker binary
 RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz && tar --strip-components=1 -xvzf docker-${DOCKER_VERSION}.tgz -C /usr/bin
 
-# Install wine-bin
-RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y wine-bin && apt-get clean
+# Install wine
+RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y wine && apt-get clean
+
+# Isntall GDrive node libraries
+npm install -g googleapis --save
+npm install -g google-auth-library --save
 
 ADD wait-for-it /usr/local/bin
 
