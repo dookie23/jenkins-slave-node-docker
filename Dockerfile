@@ -31,11 +31,20 @@ RUN apt-get update && apt-get install -y git jq rsync g++ build-essential && apt
 RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz && tar --strip-components=1 -xvzf docker-${DOCKER_VERSION}.tgz -C /usr/bin
 
 # Install wine
-RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y wine && apt-get clean
+RUN echo "deb http://httpredir.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && dpkg --add-architecture i386 && apt-get update
+RUN apt-get install -y wine/jessie-backports \
+      wine32/jessie-backports \
+      wine64/jessie-backports \
+      libwine/jessie-backports \
+      libwine:i386/jessie-backports \
+      fonts-wine/jessie-backports 
 
-# Isntall GDrive node libraries
-npm install -g googleapis --save
-npm install -g google-auth-library --save
+# Install Mono
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && echo "deb http://download.mono-project.com/repo/debian jessie main" | tee /etc/apt/sources.list.d/mono-official.list && apt-get update
+RUN apt-get install -y mono-devel
+
+# Clean caches
+RUN apt-get clean && npm cache clean
 
 ADD wait-for-it /usr/local/bin
 
