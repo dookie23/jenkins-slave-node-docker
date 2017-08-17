@@ -47,5 +47,3 @@ RUN apt-get install -y mono-devel
 RUN apt-get clean && npm cache clean
 
 ADD wait-for-it /usr/local/bin
-
-USER jenkins
