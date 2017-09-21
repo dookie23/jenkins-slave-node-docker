@@ -1,6 +1,6 @@
 FROM jenkinsci/jnlp-slave
 
-MAINTAINER Linki <dookie10@gmail.com>
+MAINTAINER dookie23 <dookie10@gmail.com>
 USER root
 
 ENV NPM_CONFIG_LOGLEVEL info
@@ -60,6 +60,7 @@ RUN apt-get update && apt-get install -y git jq rsync g++ build-essential && apt
 
 # Install Docker binary
 RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz && tar --strip-components=1 -xvzf docker-${DOCKER_VERSION}.tgz -C /usr/bin
+
 
 # Install wine
 RUN echo "deb http://httpredir.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && dpkg --add-architecture i386 && apt-get update
